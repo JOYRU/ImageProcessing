@@ -1,0 +1,22 @@
+f = imread('jjj.jpg') ; 
+%imshow(f) ; 
+
+
+
+gray_img=rgb2gray(f);
+
+
+%openImage = imread('gray_img');
+[rows,cols] = size(gray_img); 
+
+%// Your code corrected
+histogram_values = zeros(256,1);
+for i = 1:rows
+  for j = 1:cols
+    p = double(gray_img(i,j)) + 1;
+    histogram_values(p) = histogram_values(p) + 1;    
+  end
+end
+
+%// Show histogram
+bar(0:255, histogram_values, 'histc');
